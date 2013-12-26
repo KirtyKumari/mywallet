@@ -1,6 +1,6 @@
 var https = require("https");
 
-function myWallet(params) {
+function mywallet(params) {
 	this.params = params;
 
 	this.guid = params.guid;
@@ -11,7 +11,7 @@ function myWallet(params) {
 	}
 };
 
-myWallet.prototype.apiCall = function(path, callback) {
+mywallet.prototype.apiCall = function(path, callback) {
 	var options = {
 		hostname: ((this.params.hostname) ? this.params.hostname : "blockchain.info"),
 		port: ((this.params.port) ? this.params.port : 443),
@@ -38,7 +38,7 @@ myWallet.prototype.apiCall = function(path, callback) {
 	});
 };
 
-myWallet.prototype.payment = function(params, callback) {
+mywallet.prototype.payment = function(params, callback) {
 	var path = "/de/merchant/" + this.guid + "/payment?password=" + this.password + "&to=" + params.to + "&amount=" + params.amount;
 	if(params.second_password)
 		path += "&second_password=" + params.second_password;
@@ -59,7 +59,7 @@ myWallet.prototype.payment = function(params, callback) {
 	});
 };
 
-myWallet.prototype.multiplePayments = function(params, callback) {
+mywallet.prototype.multiplePayments = function(params, callback) {
 	var path = "/de/merchant/" + this.guid + "/sendmany?password=" + this.password + "&recipients=" + params.recipients;
 	if(params.second_password)
 		path += "&second_password=" + params.second_password;
@@ -80,7 +80,7 @@ myWallet.prototype.multiplePayments = function(params, callback) {
 	});
 };
 
-myWallet.prototype.getBalance = function(callback) {
+mywallet.prototype.getBalance = function(callback) {
 	var path = "/de/merchant/$guid/balance?password=" + this.password;
 	this.apiCall(path, function(err, res) {
 		if(err)
@@ -90,7 +90,7 @@ myWallet.prototype.getBalance = function(callback) {
 	});
 };
 
-myWallet.prototype.getAddresses = function(params, callback) {
+mywallet.prototype.getAddresses = function(params, callback) {
 	var path = "/de/merchant/" + this.guid + "/list?password=" + this.password;
 	if(params.confirmations)
 		path += "?confirmations=" + params.confirmations;
@@ -103,7 +103,7 @@ myWallet.prototype.getAddresses = function(params, callback) {
 	});
 };
 
-myWallet.prototype.getAddressBalance = function(params, callback) {
+mywallet.prototype.getAddressBalance = function(params, callback) {
 	if(!(params.address))
 		throw "address missing";
 	if(!(params.confirmations))
@@ -118,7 +118,7 @@ myWallet.prototype.getAddressBalance = function(params, callback) {
 	});
 };
 
-myWallet.prototype.generateAddress = function(params, callback) {
+mywallet.prototype.generateAddress = function(params, callback) {
 	var path = "/de/merchant/" + this.guid + "/new_address?password=" + this.password;
 	if(params.second_password)
 		path += "&second_password=" + params.second_password;
@@ -133,4 +133,4 @@ myWallet.prototype.generateAddress = function(params, callback) {
 	});
 };
 
-module.exports = myWallet;
+module.exports = mywallet;

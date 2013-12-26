@@ -166,4 +166,3 @@ ToDo
 - Archiving an address
 - Unarchive an address
 - Consolidating addresses
-- Publish to npm
