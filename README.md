@@ -140,3 +140,30 @@ sampleWallet.getAddressBalance({
    */
 });
 ```
+
+### Generating a new address
+```javascript
+sampleWallet.generateAddress({
+  // if double encryption is enabled
+  second_password: "SECRET",
+  // an optional label to attach to this address
+  label: "test address"
+}, function(err, res) {
+  if(err) throw err;
+  /*
+   * response could be:
+   *  {
+   *    "address": "1AxqCZjGRwRNzqCvQyUEaFN5auxVbWBfdN",
+   *    "label":  "test address"
+   *  }
+   */
+});
+```
+
+ToDo
+====
+
+- [ ] Archiving an address
+- [ ] Unarchive an address
+- [ ] Consolidating addresses
+- [ ] Publish to npm
