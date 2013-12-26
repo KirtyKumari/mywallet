@@ -47,19 +47,11 @@ myWallet.prototype.getAddresses = function(params, callback) {
 		if(err)
 			callback(err, null);
 		else
-			callback(null, res.addresses);
+			callback(null, res);
 	});
 };
 
 myWallet.prototype.getAddressBalance = function(params, callback) {
-	/*
-	 * {
-	 * 		"balance": balance in satoshi,
-	 *		"address": bitcoin address,
-	 *		"total_received": total satoshi received
-	 *	}
-	 */
-
 	if(!(params.address))
 		throw "address missing";
 	if(!(params.confirmations))
@@ -75,13 +67,6 @@ myWallet.prototype.getAddressBalance = function(params, callback) {
 };
 
 myWallet.prototype.generateAddress = function(params, callback) {
-	/*
-	 * {
-	 *		"address": generated bitcoin address,
-	 *		"label": address label
-	 * }
-	 */
-
 	var path = "/de/merchant/" + this.guid + "/new_address?password=" + this.password;
 	if(params.second_password)
 		path += "&second_password=" + params.second_password;

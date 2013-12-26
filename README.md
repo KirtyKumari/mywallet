@@ -120,3 +120,23 @@ sampleWallet.getAddresses({
    */
 });
 ```
+
+### Getting the balance of an address
+```javascript
+sampleWallet.getAddressBalance({
+  // the bitcoin address to lookup
+  address: "1AxqCZjGRwRNzqCvQyUEaFN5auxVbWBfdN",
+  // minimum number of confirmations required. 0 for unconfirmed
+  confirmations: 50
+}, function(err, res) {
+  if(err) throw err;
+  /*
+   * response could be:
+   *  {
+   *    "balance": 10000,
+   *    "address": "1AxqCZjGRwRNzqCvQyUEaFN5auxVbWBfdN",
+   *    "total_received": 1000000
+   *  }
+   */
+});
+```
