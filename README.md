@@ -14,7 +14,7 @@ var sampleWallet = new myWallet({
 });
 ```
 
-### Make Outgoing Payments
+### Make outgoing payments
 ```javascript
 sampleWallet.payment({
   // if double encryption is enabled
@@ -44,7 +44,7 @@ sampleWallet.payment({
 });
 ```
 
-### Send Many Transactions
+### Send many transactions
 ```javascript
 sampleWallet.multiplePayments({
   // if double encryption is enabled
@@ -83,6 +83,19 @@ sampleWallet.getBalance(function(err, res) {
    *  {
    *    "balance": 1000
    *  }
+   */
+});
+```
+
+### Listing addresses
+```javascript
+sampleWallet.getAddresses({
+  // the minimum number of confirmations transactions must have before being included in balance of addresses *optional*
+  confirmations: 50
+}, function(err, res) {
+  if(err) throw err;
+  /*
+   * response could be:
    */
 });
 ```
