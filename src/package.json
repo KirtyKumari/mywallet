@@ -1,0 +1,10 @@
+{
+	"name": "myWallet",
+	"version": "1.0",
+	"author": "futurez <xshapex16@googlemail.com>",
+	"description": "blockchain.info My Wallet API for node.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/futurez/myWallet"
+	}
+}
