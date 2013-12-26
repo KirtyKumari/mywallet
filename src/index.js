@@ -39,6 +39,11 @@ mywallet.prototype.apiCall = function(path, callback) {
 };
 
 mywallet.prototype.payment = function(params, callback) {
+	if(!(params.to))
+		throw "to missing";
+	if(!(params.amount))
+		throw "amount missing";
+
 	var path = "/de/merchant/" + this.guid + "/payment?password=" + this.password + "&to=" + params.to + "&amount=" + params.amount;
 	if(params.second_password)
 		path += "&second_password=" + params.second_password;
@@ -51,15 +56,13 @@ mywallet.prototype.payment = function(params, callback) {
 	if(params.note)
 		path += "&note=" + params.note;
 
-	this.apiCall(path, function(err, res) {
-		if(err)
-			callback(err, null);
-		else
-			callback(null, res);
-	});
+	this.apiCall(path, callback);
 };
 
 mywallet.prototype.multiplePayments = function(params, callback) {
+	if(!(params.recipients))
+		throw "recipients missing";
+
 	var path = "/de/merchant/" + this.guid + "/sendmany?password=" + this.password + "&recipients=" + params.recipients;
 	if(params.second_password)
 		path += "&second_password=" + params.second_password;
@@ -72,22 +75,12 @@ mywallet.prototype.multiplePayments = function(params, callback) {
 	if(params.note)
 		path += "&note=" + params.note;
 
-	this.apiCall(path, function(err, res) {
-		if(err)
-			callback(err, null);
-		else
-			callback(null, res);
-	});
+	this.apiCall(path, callback);
 };
 
 mywallet.prototype.getBalance = function(callback) {
 	var path = "/de/merchant/$guid/balance?password=" + this.password;
-	this.apiCall(path, function(err, res) {
-		if(err)
-			callback(err, null);
-		else
-			callback(null, res);
-	});
+	this.apiCall(path, callback);
 };
 
 mywallet.prototype.getAddresses = function(params, callback) {
@@ -95,12 +88,7 @@ mywallet.prototype.getAddresses = function(params, callback) {
 	if(params.confirmations)
 		path += "?confirmations=" + params.confirmations;
 
-	this.apiCall(path, function(err, res) {
-		if(err)
-			callback(err, null);
-		else
-			callback(null, res);
-	});
+	this.apiCall(path, callback);
 };
 
 mywallet.prototype.getAddressBalance = function(params, callback) {
@@ -110,12 +98,7 @@ mywallet.prototype.getAddressBalance = function(params, callback) {
 		throw "confirmations missing";
 
 	var path = "/de/merchant/" + this.guid + "/address_balance?password=" + this.password + "&address=" + params.address + "&confirmations=" + params.confirmations;
-	this.apiCall(path, function(err, res) {
-		if(err)
-			callback(err, null);
-		else
-			callback(null, res);
-	});
+	this.apiCall(path, callback);
 };
 
 mywallet.prototype.generateAddress = function(params, callback) {
@@ -125,12 +108,40 @@ mywallet.prototype.generateAddress = function(params, callback) {
 	if(params.label)
 		path += "&label=" + params.label;
 
-	this.apiCall(path, function(err, res) {
-		if(err)
-			callback(err, null);
-		else
-			callback(null, res);
-	});
+	this.apiCall(path, callback);
+};
+
+mywallet.prototype.archiveAddress = function(params, callback) {
+	if(!(params.address))
+		throw "address missing";
+
+	var path = "/de/merchant/" + this.guid + "/archive_address?password=" + this.password + "&address=" + params.address;
+	if(params.second_password)
+		path += "&second_password=" + params.second_password;
+
+	this.apiCall(path, callback);
+};
+
+mywallet.prototype.unarchiveAddress = function(params, callback) {
+	if(!(params.address))
+		throw "address missing";
+
+	var path = "/de/merchant/" + this.guid + "/unarchive_address?password=" + this.password + "&address=" + params.address;
+	if(params.second_password)
+		path += "&second_password=" + params.second_password;
+	
+	this.apiCall(path, callback);
+};
+
+mywallet.prototype.consolidate = function(params, callback) {
+	if(!(params.days))
+		throw "days missing";
+
+	var path = "/de/merchant/" + this.guid + "/auto_consolidate?password=" + this.password + "&days=" + params.days;
+	if(params.second_password)
+		path += "&second_password=" + params.second_password;
+
+	this.apiCall(path, callback);
 };
 
 module.exports = mywallet;
