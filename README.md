@@ -9,8 +9,8 @@ Documentation
 =============
 
 ```javascript
-var myWallet = require("myWallet");
-var sampleWallet = new myWallet({
+var mywallet = require("mywallet");
+var sampleWallet = new mywallet({
   guid: "SECRET",
   password: "SECRET"
 });
