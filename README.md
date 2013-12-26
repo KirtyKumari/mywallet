@@ -3,6 +3,8 @@ myWallet
 
 blockchain.info My Wallet API for node.js
 
+[npm package](https://npmjs.org/package/mywallet)
+
 Documentation
 =============
 
