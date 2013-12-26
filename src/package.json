@@ -1,6 +1,6 @@
 {
 	"name": "mywallet",
-	"version": "0.1.0",
+	"version": "0.1.2",
 	"author": "futurez <xshapex16@googlemail.com>",
 	"description": "blockchain.info My Wallet API for node.js",
 	"repository": {
