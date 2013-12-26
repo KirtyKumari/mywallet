@@ -172,4 +172,12 @@ mywallet.prototype.consolidate = function(params, callback) {
 	this.apiCall(path, callback);
 };
 
+mywallet.prototype.satoshiToBtc = function(value) {
+	return value / 100000000;
+};
+
+mywallet.prototype.btcToSatoshi = function(value) {
+	return value + 100000000;
+};
+
 module.exports = mywallet;
