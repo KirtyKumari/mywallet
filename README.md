@@ -17,13 +17,20 @@ var sampleWallet = new myWallet({
 ### Make Outgoing Payments
 ```javascript
 sampleWallet.payment({
-  second_password: "SECRET", // if double encryption is enabled
-  to: "1M8zfjMHvX6Yg8Dob4odt4AkpNfU2yCvQG", // recipients bitcoin address
-  amount: 10000, // amount to send in satoshi
-  from: "1M8zfjMHvX6Yg8Dob4odt4AkpNfU2yCvQG", // send from a specific bitcoin address *optional*
-  shared: true, // "true" or "false" indicating whether the transaction should be sent through a shared wallet. fees apply *optional*
-  fee: 1000, // transaction fee value in satoshi *optional*
-  note: "i love you" // a public note to include with the transaction *optional*
+  // if double encryption is enabled
+  second_password: "SECRET",
+  // recipients bitcoin address
+  to: "1M8zfjMHvX6Yg8Dob4odt4AkpNfU2yCvQG",
+  // amount to send in satoshi
+  amount: 10000,
+  // send from a specific bitcoin address *optional*
+  from: "1M8zfjMHvX6Yg8Dob4odt4AkpNfU2yCvQG",
+  // "true" or "false" indicating whether the transaction should be sent through a shared wallet. fees apply *optional*
+  shared: true,
+  // transaction fee value in satoshi *optional*
+  fee: 1000,
+  // a public note to include with the transaction *optional*
+  note: "i love you"
 }, function(err, res) {
   if(err) throw err;
   /*
