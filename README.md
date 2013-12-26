@@ -96,6 +96,27 @@ sampleWallet.getAddresses({
   if(err) throw err;
   /*
    * response could be:
+   *  {
+   *    "addresses": [
+   *      {
+   *        "balance": 1400938800,
+   *        "address": "1AxqCZjGRwRNzqCvQyUEaFN5auxVbWBfdN",
+   *        "label": "SMS Deposits",
+   *        "total_received": 5954572400
+   *      },
+   *      {
+   *        "balance": 79434360,
+   *        "address": "14D3Y424biYtx8RyJXQGtaNvDFhWGSJmxc",
+   *        "label": "My Wallet",
+   *        "total_received": 453300048335
+   *      },
+   *      {
+   *        "balance": 0,
+   *        "address": "12BpKnhWAVUtExZYyZGiucaaKQ56UviMYw",
+   *        "total_received": 0
+   *      }
+   *    ]
+   *  }
    */
 });
 ```
