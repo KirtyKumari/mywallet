@@ -216,14 +216,14 @@ sampleWallet.consolidate({
 });
 ```
 
-### Satoshi
+## Satoshi
 
-## Satoshi to bitcoin
+### Satoshi to bitcoin
 ```javascript
 var btc = sampleWallet.satoshiToBtc(10000);
 ```
 
-## Bitcoin to satoshi
+### Bitcoin to satoshi
 ```javascript
 var satoshi = sampleWallet.btcToSatoshi(1);
 ```
