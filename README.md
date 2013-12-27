@@ -162,9 +162,68 @@ sampleWallet.generateAddress({
 });
 ```
 
-ToDo
-====
+### Archiving an address
+```javascript
+sampleWallet.archiveAddress({
+  // if double encryption is enabled
+  second_password: "SECRET",
+  // the bitcoin address to archive
+  address: "1AxqCZjGRwRNzqCvQyUEaFN5auxVbWBfdN"
+}, function(err, res) {
+  if(err) throw err;
+  /*
+   * response could be:
+   *  {
+   *    "archived": "1AxqCZjGRwRNzqCvQyUEaFN5auxVbWBfdN"
+   *  }
+   */
+});
+```
 
-- Archiving an address
-- Unarchive an address
-- Consolidating addresses
+### Unarchive an address
+```javascript
+sampleWallet.unarchiveAddress({
+  // if double encryption is enabled
+  second_password: "SECRET",
+  // the bitcoin address to unarchive
+  address: "1AxqCZjGRwRNzqCvQyUEaFN5auxVbWBfdN"
+}, function(err, res) {
+  if(err) throw err;
+  /*
+   * response could be:
+   *  {
+   *    "active": "1AxqCZjGRwRNzqCvQyUEaFN5auxVbWBfdN"
+   *  }
+   */
+});
+```
+
+### Consolidating addresses
+```javascript
+sampleWallet.consolidate({
+  // if double encryption is enabled
+  second_password: "SECRET",
+  // sddresses which have not received any transactions in at least this many days will be consolidated
+  days: "7"
+}, function(err, res) {
+  if(err) throw err;
+  /*
+   * response could be:
+   *  {
+   *    "consolidated": ["1AxqCZjGRwRNzqCvQyUEaFN5auxVbWBfdN"]
+   *  }
+   */
+});
+```
+
+### Satoshi
+
+## Satoshi to bitcoin
+```javascript
+var btc = sampleWallet.satoshiToBtc(10000);
+```
+
+## Bitcoin to satoshi
+```javascript
+var satoshi = sampleWallet.btcToSatoshi(1);
+```
